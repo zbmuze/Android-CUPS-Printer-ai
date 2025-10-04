@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CUPS 打印助手</string>
+    <string name="server_ip">CUPS服务器IP</string>
+    <string name="server_port">端口号</string>
+    <string name="pick_file">选择文件</string>
+    <string name="print">打印</string>
+</resources>

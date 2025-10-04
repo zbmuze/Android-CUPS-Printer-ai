@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <EditText
+        android:id="@+id/et_server_ip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="CUPS服务器IP" />
+
+    <EditText
+        android:id="@+id/et_server_port"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="端口号" />
+
+    <Spinner
+        android:id="@+id/et_printer_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="选择打印机" />
+
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="账号（可选）" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="密码（可选）"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btn_pick_file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择文件" />
+
+    <Button
+        android:id="@+id/btn_print"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打印" />
+
+</LinearLayout>
