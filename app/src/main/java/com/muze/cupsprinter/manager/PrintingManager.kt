@@ -29,7 +29,9 @@ object PrintingManager {
             val regex = Regex("/printers/([^"]+)")
             regex.findAll(html).forEach { match ->
                 val name = match.groupValues[1]
-                if (!printers.contains(name)) printers.add(name)
+                if (name.isNotEmpty()) {
+                    if (!printers.contains(name)) printers.add(name)
+                }
             }
         } catch (e: Exception) {
             e.printStackTrace()
