@@ -32,17 +32,32 @@ class MainActivity : AppCompatActivity() {
 
         etServerIp = findViewById(R.id.et_server_ip)
         etServerPort = findViewById(R.id.et_server_port)
-    spPrinterName = findViewById(R.id.et_printer_name)
+        spPrinterName = findViewById(R.id.et_printer_name)
+        etUsername = findViewById(R.id.et_username)
+        etPassword = findViewById(R.id.et_password)
+        btnPickFile = findViewById(R.id.btn_pick_file)
+        btnPrint = findViewById(R.id.btn_print)
+
         // 自动获取打印机列表
-        findViewById<Button>(R.id.btn_print).post {
+        btnPrint.post {
             loadPrinterList()
         }
 
         // 打印状态查询按钮（可选）
-        findViewById<Button>(R.id.btn_print).setOnLongClickListener {
+        btnPrint.setOnLongClickListener {
             queryPrinterStatus()
             true
         }
+
+        btnPickFile.setOnClickListener {
+            pickFile()
+        }
+
+        btnPrint.setOnClickListener {
+            printFile()
+        }
+    }
+
     private fun loadPrinterList() {
         val ip = etServerIp.text.toString().trim()
         val port = etServerPort.text.toString().trim().toIntOrNull() ?: 631
@@ -77,19 +92,6 @@ class MainActivity : AppCompatActivity() {
                 ToastUtils.show(this, "打印机状态: ${'$'}status")
             }
         }.start()
-    }
-        etUsername = findViewById(R.id.et_username)
-        etPassword = findViewById(R.id.et_password)
-        btnPickFile = findViewById(R.id.btn_pick_file)
-        btnPrint = findViewById(R.id.btn_print)
-
-        btnPickFile.setOnClickListener {
-            pickFile()
-        }
-
-        btnPrint.setOnClickListener {
-            printFile()
-        }
     }
 
     private fun pickFile() {
