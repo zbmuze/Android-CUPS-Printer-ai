@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace = "com.muze.cupsprinter"
     compileSdk = 34
     defaultConfig {
         applicationId = "com.muze.cupsprinter"
