@@ -5,3 +5,4 @@
     <string name="pick_file">选择文件</string>
     <string name="print">打印</string>
 </resources>
+    <string name="prompt_select_printer">选择打印机</string>

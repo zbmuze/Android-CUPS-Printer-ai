@@ -22,7 +22,7 @@
         android:id="@+id/et_printer_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:prompt="选择打印机" />
+        android:prompt="@string/prompt_select_printer" />
 
     <EditText
         android:id="@+id/et_username"
