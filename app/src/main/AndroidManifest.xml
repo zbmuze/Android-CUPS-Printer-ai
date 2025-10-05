@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.muze.cupsprinter"> <!-- 确保包名与build.gradle的applicationId一致 -->
 
+    <!-- 仅保留必需的网络权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:allowBackup="true"
-        android:icon="@android:drawable/sym_def_app_icon"
+        android:allowBackup="false" <!-- 优化备份配置 -->
+        android:icon="@mipmap/ic_launcher" <!-- 替换为自定义图标（需自行添加） -->
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CUPSPrinter">
-        <activity android:name=".ui.MainActivity"
-            android:exported="true">
+        android:theme="@style/Theme.CUPSPrinter"> <!-- 确保主题在styles.xml中存在 -->
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"> <!-- 启动页必须设为true，正确配置 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
