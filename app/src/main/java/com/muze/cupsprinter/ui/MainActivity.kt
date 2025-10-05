@@ -30,13 +30,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        etServerIp = findViewById(R.id.et_server_ip)
-        etServerPort = findViewById(R.id.et_server_port)
-        spPrinterName = findViewById(R.id.et_printer_name)
-        etUsername = findViewById(R.id.et_username)
-        etPassword = findViewById(R.id.et_password)
-        btnPickFile = findViewById(R.id.btn_pick_file)
-        btnPrint = findViewById(R.id.btn_print)
+    etServerIp = findViewById(R.id.et_server_ip)
+    etServerPort = findViewById(R.id.et_server_port)
+    spPrinterName = findViewById(R.id.sp_printer_name)
+    etUsername = findViewById(R.id.et_username)
+    etPassword = findViewById(R.id.et_password)
+    btnPickFile = findViewById(R.id.btn_pick_file)
+    btnPrint = findViewById(R.id.btn_print)
 
         // 自动获取打印机列表
         btnPrint.post {
