@@ -26,12 +26,13 @@ object PrintingManager {
             }
             val html = conn.inputStream.bufferedReader().readText()
             // 简单解析 HTML，提取打印机名（<A HREF="/printers/xxx">xxx</A>）
-            val regex = Regex("/printers/([^"]+)")
-            regex.findAll(html).forEach { match ->
+            val regex = Regex("/printers/([^\"]+)")
+            for (match in regex.findAll(html)) {
                 val name = match.groupValues[1]
-                if (name.isNotEmpty()) {
-                    if (!printers.contains(name)) printers.add(name)
+                if (name.isNotEmpty() && !printers.contains(name)) {
+                    printers.add(name)
                 }
+            }
             }
         } catch (e: Exception) {
             e.printStackTrace()
