@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.muze.cupsprinter"> <!-- 确保包名与build.gradle的applicationId一致 -->
+<!-- 1. 根标签必须有 package 属性，包名与 build.gradle 的 applicationId 一致 -->
+<manifest 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.muze.cupsprinter">
 
-    <!-- 仅保留必需的网络权限 -->
+    <!-- 2. 仅保留必需的网络权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- 3. application 标签正确闭合，配置必要属性 -->
     <application
-        android:allowBackup="false" <!-- 优化备份配置 -->
-        android:icon="@mipmap/ic_launcher" <!-- 替换为自定义图标（需自行添加） -->
-        android:label="@string/app_name"
+        android:allowBackup="false"
+        android:icon="@android:drawable/sym_def_app_icon" <!-- 暂时用系统图标，避免资源缺失 -->
+        android:label="@string/app_name" <!-- 确保 res/values/strings.xml 中有 "app_name" -->
         android:supportsRtl="true"
-        android:theme="@style/Theme.CUPSPrinter"> <!-- 确保主题在styles.xml中存在 -->
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"> <!-- 用 AndroidX 内置主题，避免自定义主题缺失 -->
 
+        <!-- 4. activity 标签在 application 内部，正确配置启动页 -->
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true"> <!-- 启动页必须设为true，正确配置 -->
+            android:exported="true"> <!-- 启动页必须设为 true -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
