@@ -31,6 +31,12 @@ jobs:
         echo "Listing app/build/outputs"
         ls -R app/build/outputs || true
 
+    - name: Show APK dir
+      if: success()
+      run: |
+        echo "Listing app/build/outputs/apk/debug"
+        ls -la app/build/outputs/apk/debug || true
+
     - name: Zip build outputs
       if: success()
       run: |
@@ -47,8 +53,9 @@ jobs:
       with:
         name: app-build-artifacts
         path: |
-          app/build/outputs/apk/debug/app-debug.apk
-          release-artifacts/app-build-outputs.zip
+          app/build/outputs/**/*.apk
+          app/build/outputs/**
+          release-artifacts/**
 name: Android CI
 
 on:
