@@ -48,14 +48,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // 初始化控件（修复缩进格式，避免编译警告）
-        etServerIp = findViewById(R.id.et_server_ip)
-        etServerPort = findViewById(R.id.et_server_port)
-        spPrinterName = findViewById(R.id.sp_printer_name)
-        etUsername = findViewById(R.id.et_username)
-        etPassword = findViewById(R.id.et_password)
-        btnPickFile = findViewById(R.id.btn_pick_file)
-        btnPrint = findViewById(R.id.btn_print)
+    etServerIp = findViewById(R.id.et_server_ip)
+    etServerPort = findViewById(R.id.et_server_port)
+    spPrinterName = findViewById(R.id.sp_printer_name)
+    etUsername = findViewById(R.id.et_username)
+    etPassword = findViewById(R.id.et_password)
+    btnPickFile = findViewById(R.id.btn_pick_file)
+    btnPrint = findViewById(R.id.btn_print)
 
         // 自动获取打印机列表（延迟到UI初始化完成后执行）
         btnPrint.post {
