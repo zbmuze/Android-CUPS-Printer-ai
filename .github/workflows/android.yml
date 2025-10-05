@@ -9,29 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      # 配置项目实际使用的 SDK 版本（需与 app/build.gradle 一致！）
-      COMPILE_SDK_VERSION: 33  # 替换为你 build.gradle 中的 compileSdk
-      BUILD_TOOLS_VERSION: 33.0.2  # 替换为你 build.gradle 中的 buildToolsVersion
 
     steps:
     - uses: actions/checkout@v3
-      with:
-        # 确保拉取的文件换行符为 Linux 兼容格式（LF），避免 CRLF 导致 XML 解析错误
-        fetch-depth: 0
-        lfs: false
-
-    # 新增步骤1：验证 AndroidManifest.xml 文件（关键！定位文件本身问题）
-    - name: Verify AndroidManifest.xml
-      run: |
-        echo "=== 1. 检查文件是否存在 ==="
-        ls -l app/src/main/AndroidManifest.xml
-        echo "=== 2. 打印文件前20行内容（查看语法/编码） ==="
-        head -n 20 app/src/main/AndroidManifest.xml
-        echo "=== 3. 检查文件编码（必须为 UTF-8） ==="
-        file -I app/src/main/AndroidManifest.xml
-        echo "=== 4. 检查换行符格式（Linux 需为 LF，而非 CRLF） ==="
-        cat -A app/src/main/AndroidManifest.xml | head -n 5  # $ 表示 LF，^M$ 表示 CRLF
 
     - name: Set up JDK 17
       uses: actions/setup-java@v3
@@ -39,24 +19,8 @@ jobs:
         distribution: 'temurin'
         java-version: 17
 
-    # 优化步骤：明确指定 Android SDK 组件，避免依赖缺失
     - name: Set up Android SDK
       uses: android-actions/setup-android@v3
-      with:
-        # 安装项目所需的 SDK 组件（与 env 中的版本对应）
-        sdk-version: ${{ env.COMPILE_SDK_VERSION }}
-        build-tools-version: ${{ env.BUILD_TOOLS_VERSION }}
-        # 安装必要的额外组件（如 AndroidX、构建工具）
-        components: |
-          platform-tools
-          platforms;android-${{ env.COMPILE_SDK_VERSION }}
-          build-tools;${{ env.BUILD_TOOLS_VERSION }}
-          extras;android;m2repository
-          extras;google;m2repository
 
-    # 优化步骤：输出详细日志，定位 Manifest 解析的具体错误
-    - name: Build with Gradle (detailed log)
-      run: ./gradlew assembleDebug --stacktrace --info  # 添加 --stacktrace 和 --info
-      env:
-        # 确保 Gradle 输出完整日志
-        GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.logging.level=info"
+    - name: Build with Gradle
+      run: ./gradlew assembleDebug
