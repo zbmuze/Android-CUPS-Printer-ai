@@ -33,7 +33,6 @@ object PrintingManager {
                     printers.add(name)
                 }
             }
-            }
         } catch (e: Exception) {
             e.printStackTrace()
         }
