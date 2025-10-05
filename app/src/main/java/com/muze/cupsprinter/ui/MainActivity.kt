@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     etServerIp = findViewById(R.id.et_server_ip)
     etServerPort = findViewById(R.id.et_server_port)
-    spPrinterName = findViewById(R.id.sp_printer_name)
+    spPrinterName = findViewById(R.id.et_printer_name)
     etUsername = findViewById(R.id.et_username)
     etPassword = findViewById(R.id.et_password)
     btnPickFile = findViewById(R.id.btn_pick_file)
