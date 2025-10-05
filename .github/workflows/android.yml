@@ -73,12 +73,24 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Upload assets to release
+    - name: Upload APK to release
       if: success()
-      uses: softprops/action-gh-release@v1
+      uses: actions/upload-release-asset@v1
       with:
-        files: |
-          app/build/outputs/apk/debug/app-debug.apk
-          release-artifacts/app-build-outputs.zip
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: app/build/outputs/apk/debug/app-debug.apk
+        asset_name: app-debug.apk
+        asset_content_type: application/vnd.android.package-archive
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload zip to release
+      if: success()
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: release-artifacts/app-build-outputs.zip
+        asset_name: app-build-outputs.zip
+        asset_content_type: application/zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
